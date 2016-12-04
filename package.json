@@ -1,0 +1,26 @@
+{
+  "name": "pwwwa",
+  "version": "1.0.0",
+  "description": "Progressive World Wide Web App A.K.A PWWWA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarmadsangi/pwwwa.git"
+  },
+  "keywords": [
+    "pwa",
+    "framework",
+    "spa",
+    "javascript",
+    "node"
+  ],
+  "author": "sarmadsangi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarmadsangi/pwwwa/issues"
+  },
+  "homepage": "https://github.com/sarmadsangi/pwwwa#readme"
+}
