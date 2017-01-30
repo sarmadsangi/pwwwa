@@ -6,6 +6,7 @@ import { match, RouterContext } from 'react-router'
 import { flushToHTML } from 'styled-jsx/server'
 
 import routes from './components/routes'
+const stats = require('./dist/stats.json');
 
 const app = koa()
 app.use(function *(){
@@ -21,18 +22,21 @@ app.use(function *(){
 			} else if (redirectLocation) {
 				this.redirect(redirectLocation.pathname + redirectLocation.search);
 			} else if (renderProps) {
+				console.log(stats)
 				// You can also check renderProps.components or renderProps.routes for
 				// your "not found" component or route respectively, and send a 404 as
 				// below, if you're using a catch-all route.
 				const app = ReactDOMServer.renderToString(<RouterContext {...renderProps} />)
 				const styles = flushToHTML()
+				const scripts = Object.keys(stats.assetsByChunkName).reverse()
+					.map(key => `<script src='dist/${stats.assetsByChunkName[key]}' ></script>`)
 				const html = `<!doctype html>
 					<html>
 					  <head>${styles}</head>
 					  <title>Test</title>
 					  <body>
 					    <div id="app">${app}</div>
-					   	<script src='/dist/bundle.js'></script>
+					   	${scripts}
 					  </body>
 					</html>`
 			  	this.body = html
